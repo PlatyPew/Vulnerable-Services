@@ -16,6 +16,8 @@ app.get("/", (req, res) => {
 app.post("/login", (req, res) => {
     const password = req.body.password;
 
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Prevent bruteforce
+
     if (password === "G&2t") {
         res.write(WIN);
     } else {
