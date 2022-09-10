@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Super Ultra Secret Vault</title>
+        <script>
+            function unlock(password) {
+                if (
+                    password.length === 4 &&
+                    8 * Math.pow(password.charCodeAt(0), 2) +
+                        2 * Math.pow(password.charCodeAt(1), 4) -
+                        3 * Math.pow(password.charCodeAt(2), 3) +
+                        Math.pow(password.charCodeAt(3), 2) ===
+                        3849056 &&
+                    /^[F-Ht-v1-3@&*]+$/g.test(password)
+                )
+                    alert("You did it!");
+                else alert("Awww, try harder");
+            }
+        </script>
+    </head>
+
+    <body>
+        <section>
+            <form method="POST" action="/login">
+                <label for="password"> Password:</label>
+                <input id="password" type="password" name="password" />
+                <button onclick="unlock(document.getElementById('password').value)">Unlock!</button>
+            </form>
+        </section>
+    </body>
+</html>
