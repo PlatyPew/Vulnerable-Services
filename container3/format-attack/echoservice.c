@@ -1,3 +1,5 @@
+// Compile on debian buster with libc-2.28
+
 #include <stdio.h>
 
 void echo() {

