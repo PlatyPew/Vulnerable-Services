@@ -11,13 +11,13 @@ COPY ./authorized_keys /root/.ssh
 
 
 USER computer2
-WORKDIR /opt/bad-js
+WORKDIR /opt/vault
 
-COPY --chown=computer2:users ./bad-js /opt/bad-js
+COPY --chown=computer2:users ./bad-js /opt/vault
 
 RUN npm install
 USER root
 
 EXPOSE 22 8080
 
-ENTRYPOINT ["sh", "-c", "rc-status; rc-service sshd start; su computer2 -c 'npm run start'"]
+CMD ["sh", "-c", "rc-status; rc-service sshd start; su computer2 -c 'npm run start'"]
