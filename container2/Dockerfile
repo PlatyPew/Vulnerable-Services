@@ -15,7 +15,7 @@ USER computer2
 WORKDIR /opt/vault
 
 COPY --chown=computer2:users ./bad-js /opt/vault
-COPY --chown=computer2:users ./authorized_keys /home/computer2
+COPY --chown=computer2:users ./weak-rsa/authorized_keys /home/computer2
 COPY --chown=computer2:users ./flag3.txt /home/computer2/flag.txt
 
 RUN npm install && \
