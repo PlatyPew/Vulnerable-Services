@@ -1,0 +1,5 @@
+Congratulations on solving part 4/6! Here's your flag!
+FLAG{7h3_gcd_4l60r17hm_15_pur3_m461c}
+
+Once again, you've gotten root, but this still doesn't look like Ubuntu...
+Perhaps there is something else on the network as well

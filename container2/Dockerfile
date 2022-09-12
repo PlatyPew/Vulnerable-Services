@@ -8,6 +8,7 @@ RUN adduser -S computer2 -G users -s /bin/sh && \
     mkdir -p /run/openrc && touch /run/openrc/softlevel
 
 COPY ./authorized_keys /root/.ssh
+COPY ./flag4.txt /root/flag.txt
 
 
 USER computer2
@@ -15,6 +16,7 @@ WORKDIR /opt/vault
 
 COPY --chown=computer2:users ./bad-js /opt/vault
 COPY --chown=computer2:users ./authorized_keys /home/computer2
+COPY --chown=computer2:users ./flag3.txt /home/computer2/flag.txt
 
 RUN npm install && \
     echo "sudo cp authorized_keys /root/.ssh/authorized_keys" >> /home/computer2/.ash_history
