@@ -7,7 +7,7 @@ RUN adduser -S computer2 -G users -s /bin/sh && \
     mkdir -p /root/.ssh && \
     mkdir -p /run/openrc && touch /run/openrc/softlevel
 
-COPY ./authorized_keys /root/.ssh
+COPY ./weak-rsa/authorized_keys /root/.ssh
 COPY ./flag4.txt /root/flag.txt
 
 
