@@ -23,6 +23,6 @@ RUN npm install && \
 
 USER root
 
-EXPOSE 22 8080
+EXPOSE 22 3000
 
 CMD ["sh", "-c", "rc-status; rc-service sshd start; su computer2 -c 'npm run start'"]
