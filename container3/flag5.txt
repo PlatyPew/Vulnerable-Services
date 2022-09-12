@@ -1,0 +1,5 @@
+Congratulations on solving part 5/6! Here's your flag!
+FLAG{n3v3r_3v3r_u53_gets_n0_m4773r_h0w_l4zy_y0u_4r3}
+
+Was not expecting anyone to get this far, but I hoped you liked binary exploitation challenges,
+because there's another one waiting for you :)

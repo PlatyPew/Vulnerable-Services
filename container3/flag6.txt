@@ -1,0 +1,4 @@
+Congratulations on solving part 6/6! Here's your flag!
+FLAG{f0rm47_57r1n6_70_c0n741n3r_35c4p3}
+
+Well done! 🎉
