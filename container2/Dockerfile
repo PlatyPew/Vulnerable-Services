@@ -14,8 +14,11 @@ USER computer2
 WORKDIR /opt/vault
 
 COPY --chown=computer2:users ./bad-js /opt/vault
+COPY --chown=computer2:users ./authorized_keys /home/computer2
 
-RUN npm install
+RUN npm install && \
+    echo "sudo cp authorized_keys /root/.ssh/authorized_keys" >> /home/computer2/.ash_history
+
 USER root
 
 EXPOSE 22 8080

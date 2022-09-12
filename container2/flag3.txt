@@ -1,0 +1,4 @@
+Congratulations on solving part 3/6! Here's your flag!
+FLAG{5h0uld_h4v3_ju57_u53d_sha256}
+
+Hmmm... is there perhaps anyway to escalate to a root shell?
