@@ -28,5 +28,11 @@ services:
 networks:
     one-two:
         name: container_one_two_local
+        ipam:
+            config:
+                - subnet: 10.0.1.0/24
     two-three:
         name: container_two_three_local
+        ipam:
+            config:
+                - subnet: 10.0.2.0/24
