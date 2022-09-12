@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+    # container1:
+    #     build: ./container1
+    #     container_name: container1
+    #     ports:
+    #         - "8080:8080"
+    #     restart: always
+    #     networks:
+    #         - one-two
+
+    container2:
+        build: ./container2
+        container_name: container2
+        restart: always
+        networks:
+            - one-two
+            - two-three
+
+    container3:
+        build: ./container3
+        container_name: container3
+        restart: always
+        networks:
+            - two-three
+
+networks:
+    one-two:
+        name: container_one_two_local
+    two-three:
+        name: container_two_three_local
