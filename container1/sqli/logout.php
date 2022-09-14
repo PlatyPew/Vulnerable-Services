@@ -2,4 +2,5 @@
     session_start();
     session_unset();
     session_destroy();
-    header("location: ../ICT1004_Project/index.php");
+    header("location: ../2204/index.php");
+?>

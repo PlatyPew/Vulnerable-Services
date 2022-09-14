@@ -8,7 +8,6 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
 
-
     <!--jQuery-->
     <script defer
             src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -23,6 +22,10 @@
             crossorigin="anonymous">
     </script>
 
+    <!--Google Icons-->
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     

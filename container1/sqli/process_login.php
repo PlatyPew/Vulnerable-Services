@@ -50,18 +50,12 @@ function authenticateUser() {
             $pwd_hashed = $row["password"];
     // Check if the password matches:
             if (!password_verify($_POST["password"], $pwd_hashed)) {
-                $errorMsg = "press fqw to pay respects...(T⌓T)";
+                $errorMsg = "press f to pay respects...(T⌓T)";
                 $success = false;
-                var_dump($_POST["password"]);
-                echo"<br>";
-                var_dump(password_verify($_POST["password"], $pwd_hashed));
-                echo"<br>";
-                var_dump($pwd_hashed);
             } 
         } else {
             $errorMsg = "press f to pay respects...(T⌓T)";
             $success = false;
-            var_dump($success);
         }
         $stmt->close();
     }
@@ -88,6 +82,8 @@ function authenticateUser() {
             <?php
             if ($success == true)
             {
+                session_unset();
+                session_destroy();
                 session_start();
                 $_SESSION["email"] = $email;
                 $_SESSION["pwd"] = $pwd_hashed;
