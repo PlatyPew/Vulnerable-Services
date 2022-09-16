@@ -7,13 +7,47 @@ const PORT = 3000;
 
 const unlock = (password) => {
     return (
-        password.length === 4 &&
+        password.length == 8 &&
+        password.charCodeAt(0) == 71 &&
+        password.charCodeAt(1) == 38 &&
+        password.charCodeAt(2) * password.charCodeAt(3) === 5800 &&
+        password.charCodeAt(2) - password.charCodeAt(3) === -66 &&
+        password.charCodeAt(0) +
+            password.charCodeAt(1) +
+            password.charCodeAt(2) +
+            password.charCodeAt(3) +
+            password.charCodeAt(4) +
+            password.charCodeAt(5) +
+            password.charCodeAt(6) +
+            password.charCodeAt(7) ===
+            576 &&
+        password.charCodeAt(0) +
+            2 * password.charCodeAt(1) +
+            3 * password.charCodeAt(2) +
+            4 * password.charCodeAt(3) +
+            5 * password.charCodeAt(4) +
+            6 * password.charCodeAt(5) +
+            7 * password.charCodeAt(6) +
+            8 * password.charCodeAt(7) ===
+            2685 &&
+        password.charCodeAt(0) -
+            password.charCodeAt(1) -
+            password.charCodeAt(2) -
+            password.charCodeAt(3) -
+            password.charCodeAt(4) -
+            password.charCodeAt(5) -
+            password.charCodeAt(6) -
+            password.charCodeAt(7) ===
+            -434 &&
         8 * Math.pow(password.charCodeAt(0), 2) +
             2 * Math.pow(password.charCodeAt(1), 4) -
             3 * Math.pow(password.charCodeAt(2), 3) +
-            Math.pow(password.charCodeAt(3), 2) ===
-            3849056 &&
-        /^[F-Ht-v1-3@&*]+$/g.test(password)
+            Math.pow(password.charCodeAt(3), 2) +
+            74 * Math.pow(password.charCodeAt(4), 2) -
+            9 * Math.pow(password.charCodeAt(5), 3) +
+            7 * Math.pow(password.charCodeAt(6), 4) -
+            Math.pow(password.charCodeAt(7), 2) ===
+            648891911
     );
 };
 
