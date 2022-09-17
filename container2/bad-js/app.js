@@ -68,11 +68,9 @@ app.get("/app", (_, res) => {
     res.end();
 });
 
-app.post("/login", async (req, res) => {
+app.post("/login", (req, res) => {
     const password = req.body.password;
     const path = req.body.path;
-
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Prevent bruteforce
 
     try {
         if (!unlock(password)) {
