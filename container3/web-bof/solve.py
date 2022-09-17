@@ -20,12 +20,12 @@ continue
 
 # For GDB debugging
 def start():
-    if args.GDB:
-        return gdb.debug(elf.path, gdbscript=gs)
-    elif args.REMOTE:
-        return remote(HOST, PORT)
-    else:
+    if args.LOCAL:
+        if args.GDB:
+            return gdb.debug(elf.path, gdbscript=gs)
         return process(elf.path)
+    else:
+        return remote(HOST, PORT)
 
 p = start()
 
