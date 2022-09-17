@@ -10,6 +10,11 @@ void readFile(char *file) {
     if (getcwd(cwd, sizeof(cwd)) == NULL) {
         return;
     }
+
+    if (!strcmp(file, "/")) {
+        file = "/index.html";
+    }
+
     strcat(cwd, file);
 
     if ((fp = fopen(cwd, "rb")) == NULL) {
