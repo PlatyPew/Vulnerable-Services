@@ -12,7 +12,7 @@ services:
     #     deploy:
     #         resources:
     #             limits:
-    #                 cpus: "0.25"
+    #                 cpus: "0.4"
     #                 memory: 256M
 
     container2:
@@ -25,7 +25,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.25"
+                    cpus: "0.4"
                     memory: 256M
 
     container3:
@@ -37,7 +37,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.25"
+                    cpus: "0.4"
                     memory: 256M
 
 networks:
