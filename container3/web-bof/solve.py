@@ -7,10 +7,10 @@ PORT = 80
 elf = context.binary = ELF("./httpserver")
 rop = ROP(elf)
 
-if args.REMOTE:
-    libc = ELF("./libc-2.28.so")
-else:
+if args.LOCAL:
     libc = ELF("/lib/libc.so.6")
+else:
+    libc = ELF("./libc-2.28.so")
 
 print(libc.path)
 
