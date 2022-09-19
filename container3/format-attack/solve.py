@@ -1,17 +1,22 @@
-#!#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pwn import *
 
 # Read binaries
-elf = context.binary = ELF("/usr/bin/echoservice")
-libc = ELF("/lib/x86_64-linux-gnu/libc.so.6")
+elf = context.binary = ELF("./echoservice_patched")
+libc = ELF("./libc-2.28.so")
 
+PORT = 4444
 
 # For GDB debugging
 def start():
-    if args.GDB:
-        return gdb.debug(elf.path, gdbscript='continue')
-    else:
+    if args.LOCAL:
+        if args.GDB:
+            return gdb.debug(elf.path, gdbscript='continue')
         return process(elf.path)
+    else:
+        l = listen(PORT)
+        _ = l.wait_for_connection()
+        return l
 
 
 p = start()
