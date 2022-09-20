@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 from pwn import *
 
-HOST = '172.17.0.3'
-PORT = 80
+HOST = '10.0.2.2'
+PORT = 8080
 
 elf = context.binary = ELF("./httpserver")
 rop = ROP(elf)
@@ -14,18 +14,16 @@ else:
 
 print(libc.path)
 
-gs = '''
-continue
-'''
 
 # For GDB debugging
 def start():
     if args.LOCAL:
         if args.GDB:
-            return gdb.debug(elf.path, gdbscript=gs)
+            return gdb.debug(elf.path, gdbscript='continue')
         return process(elf.path)
     else:
         return remote(HOST, PORT)
+
 
 p = start()
 
