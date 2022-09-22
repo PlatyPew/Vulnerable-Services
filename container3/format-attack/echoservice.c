@@ -10,9 +10,10 @@ void echo() {
     printf(contents);
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stdin, NULL, _IONBF, 0);
+    setresuid(geteuid(), geteuid(), geteuid());
 
     while (1)
         echo();

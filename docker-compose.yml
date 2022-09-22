@@ -9,6 +9,11 @@ services:
     #     restart: always
     #     networks:
     #         - one-two
+    #     deploy:
+    #         resources:
+    #             limits:
+    #                 cpus: "0.4"
+    #                 memory: 256M
 
     container2:
         build: ./container2
@@ -17,6 +22,11 @@ services:
         networks:
             - one-two
             - two-three
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.4"
+                    memory: 256M
 
     container3:
         build: ./container3
@@ -24,6 +34,11 @@ services:
         restart: always
         networks:
             - two-three
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.4"
+                    memory: 256M
 
 networks:
     one-two:

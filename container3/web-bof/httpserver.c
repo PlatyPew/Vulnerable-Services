@@ -10,6 +10,11 @@ void readFile(char *file) {
     if (getcwd(cwd, sizeof(cwd)) == NULL) {
         return;
     }
+
+    if (!strcmp(file, "/")) {
+        file = "/index.html";
+    }
+
     strcat(cwd, file);
 
     if ((fp = fopen(cwd, "rb")) == NULL) {
@@ -19,6 +24,7 @@ void readFile(char *file) {
     }
 
     puts("HTTP/1.1 200 OK");
+    puts("Content-Type: text/html; charset=UTF-8");
     puts("Server: Http Server written in C\n");
 
     fseek(fp, 0L, SEEK_END);

