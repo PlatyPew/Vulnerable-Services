@@ -1,59 +1,36 @@
 <?php
 
 include "home.php";
-
-// Create database connection.
 include "config.php";
+
+$search = "";
 
 if (!isset($_SESSION["email"]))  
 {
-    echo "01111100 01011100 01011100 01111100 00100001 00101000 00110011 "
-    . "00100000 00101011 01111100 00110010 01100000 00101111";
+    echo " 00100000 00110000 01111100 01011100 01011100 01111100 00101000 00110011 "
+    . "00100000 00110100 00110110 00110100 00100001 01111100 01011100 01011100 01111100";
 }
 
-$search = $_GET["search"];
-if ($search === "") {
-    $search = "2204";
+else {
+    $search = $_GET["search"];
+    if ($search === "") {
+        $search = "an empty cup..";
+    }
+
+    $sql = "SELECT * FROM table_of_tings WHERE name LIKE '%$search%';";
+    $result = mysqli_query($conn, $sql);
+    try {
+        if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+        } 
+        if (str_contains($search, "'")){           
+            echo "<script type='text/javascript'>alert('( ´´°︣ ͜ʖ °︣ ´´)');</script>"; 
+        } else if ($result->num_rows < 1) {
+            echo "<script type='text/javascript'>alert('We do not sell lousy products such as $search.');</script>";
+        } else {
+            echo "<script type='text/javascript'>alert('$search is in stock.');</script>";
+        } 
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
-$search = str_ireplace('delay', '', $search);
-$search = str_ireplace('sleep', '', $search);
-$search = str_ireplace('benchmark', '', $search);
-
-$sql = "SELECT * FROM table_of_tings WHERE name LIKE '%$search%';";
-$result = mysqli_query($conn, $sql);
-echo "<table class='table align-middle'>";
-    echo "<thead class='bg-light'>";
-        echo "<tr>";
-          echo "<th>the ting</th>";
-          echo "<th>Name</th>";
-          echo "<th>Price</th>";
-          echo "<th>Colour</th>";
-        echo "</tr>";
-    echo "</thead>";
-try {
-    if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-    } 
-    if (!$result) {
-        $error = mysqli_error($conn);
-    } else {
-        while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                    echo "<td>";
-                        echo "<div class='d-flex align-items-right'>";
-                        $img_base64 = $row["img_base64"];
-                        $img = "data:image/" . "png" . ";base64," . $img_base64;
-                        echo "<img src='$img' alt='img' height='100px' width='100px'/>";
-                        echo "</div>";
-                    echo "</td>";
-                    echo "<td>" . $row["name"] . "</td>";
-                    echo "<td>" . $row["price"] . "</td>";
-                    echo "<td>" . $row["colour"] . "</td>";
-                echo "</tr>";
-        }
-    } echo "</table>";
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
-
-

@@ -48,5 +48,4 @@ if ($_SESSION["email"] !== "king@gmail.com")
       }
     }
 }
-?>
     

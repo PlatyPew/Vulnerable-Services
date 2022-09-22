@@ -45,7 +45,7 @@ else
 {
     echo "<h2>Please do not run this page directly.</h2>";
     echo "<p>Register with the link below:</p>";
-    echo "<a href='register-php'>Sign Up Page</a>";
+    echo "<a href='register.php'>Sign Up Page</a>";
     exit();
 }
         
