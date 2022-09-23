@@ -1,19 +1,37 @@
 version: "3.9"
 
 services:
-    # container1:
-    #     build: ./container1
-    #     container_name: container1
-    #     ports:
-    #         - "8080:8080"
-    #     restart: always
-    #     networks:
-    #         - one-two
-    #     deploy:
-    #         resources:
-    #             limits:
-    #                 cpus: "0.4"
-    #                 memory: 256M
+    container1:
+        build: ./container1/apache
+        container_name: container1
+        ports:
+            - "8888:80"
+        restart: always
+        networks:
+            - apache-mariadb
+            - one-two
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.3"
+                    memory: 128M
+
+    container1-db:
+        build: ./container1/mysql
+        container_name: container1-db
+        restart: always
+        networks:
+            - apache-mariadb
+        environment:
+            MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: true
+            MARIADB_USER: sqldev
+            MARIADB_PASSWORD: Php=p@in
+            MARIADB_DATABASE: 2204_for_fun
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.3"
+                    memory: 128M
 
     container2:
         build: ./container2
@@ -25,8 +43,8 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.4"
-                    memory: 256M
+                    cpus: "0.3"
+                    memory: 128M
 
     container3:
         build: ./container3
@@ -37,10 +55,12 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.4"
-                    memory: 256M
+                    cpus: "0.2"
+                    memory: 64M
 
 networks:
+    apache-mariadb:
+        name: container_php_mariadb_local
     one-two:
         name: container_one_two_local
         ipam:
