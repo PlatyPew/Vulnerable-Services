@@ -1,7 +1,7 @@
 <?php
 include "head.inc.php";
 include "navbar.php";
-include "config.php";
+include_once "config.php";
 
 $search = "";
 

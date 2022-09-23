@@ -1,7 +1,7 @@
 <?php
 
 include "home.php";
-include "config.php";
+include_once "config.php";
 
 $search = "";
 
@@ -16,7 +16,7 @@ else {
     if ($search === "") {
         $search = "an empty cup..";
     }
-
+    
     $sql = "SELECT * FROM table_of_tings WHERE name LIKE '%$search%';";
     $result = mysqli_query($conn, $sql);
     try {
