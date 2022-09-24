@@ -12,8 +12,6 @@ if args.LOCAL:
 else:
     libc = ELF("./libc-2.28.so")
 
-print(libc.path)
-
 
 # For GDB debugging
 def start():

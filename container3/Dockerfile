@@ -9,7 +9,7 @@ COPY ./web-bof/index.html /opt/website
 
 COPY ./format-attack/echoservice /usr/bin
 RUN chmod 4755 /usr/bin/echoservice && \
-    echo "Congratulations on getting this far! However, you are almost there. It's time to escape!" > /root/psuedoflag.txt
+    echo "Congratulations on getting this far! However, you are almost there. It's time to escape!" > /root/pseudoflag.txt
 
 USER computer3
 COPY --chown=computer3:users ./flag5.txt /home/computer3/someflagnamethatcannotbeguessedsoyouactuallyneedtogetshell.txt
