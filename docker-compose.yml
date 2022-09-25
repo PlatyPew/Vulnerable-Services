@@ -36,27 +36,43 @@ services:
     container2:
         build: ./container2
         container_name: container2
-        restart: always
         networks:
             - one-two
             - two-three
+        read_only: true
+        tmpfs:
+            - /tmp:exec
+            - /run/openrc
         deploy:
             resources:
                 limits:
                     cpus: "0.3"
                     memory: 128M
+                    pids: 64
+            restart_policy:
+                condition: on-failure
+                max_attempts: 5
+                delay: 3s
+
 
     container3:
         build: ./container3
         container_name: container3
-        restart: always
         networks:
             - two-three
+        read_only: true
+        tmpfs:
+            - /tmp:exec
         deploy:
             resources:
                 limits:
-                    cpus: "0.2"
+                    cpus: "0.1"
                     memory: 64M
+                    pids: 16
+            restart_policy:
+                condition: on-failure
+                max_attempts: 5
+                delay: 3s
 
 networks:
     apache-mariadb:
