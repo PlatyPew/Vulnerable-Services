@@ -43,17 +43,25 @@ services:
         tmpfs:
             - /tmp:exec
             - /run/openrc
+        ulimits:
+            nproc: 1024
         deploy:
             resources:
                 limits:
-                    cpus: "0.3"
+                    cpus: "0.2"
                     memory: 128M
-                    pids: 64
+                    pids: 32
             restart_policy:
                 condition: on-failure
                 max_attempts: 5
                 delay: 3s
-
+        cap_drop:
+            - ALL
+        cap_add:
+            - cap_setuid
+            - cap_setgid
+            - cap_net_raw
+            - cap_sys_chroot
 
     container3:
         build: ./container3
@@ -63,16 +71,20 @@ services:
         read_only: true
         tmpfs:
             - /tmp:exec
+        ulimits:
+            nproc: 1024
         deploy:
             resources:
                 limits:
                     cpus: "0.1"
                     memory: 64M
-                    pids: 16
+                    pids: 32
             restart_policy:
                 condition: on-failure
                 max_attempts: 5
                 delay: 3s
+        cap_drop:
+            - ALL
 
 networks:
     apache-mariadb:
