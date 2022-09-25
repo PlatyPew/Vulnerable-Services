@@ -85,6 +85,8 @@ services:
                 delay: 3s
         cap_drop:
             - ALL
+        cap_add:
+            - cap_dac_read_search
 
 networks:
     apache-mariadb:
