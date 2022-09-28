@@ -38,7 +38,7 @@ function authenticateUser() {
         $success = false;
     } else {
     // Prepare the statement:
-        $stmt = $conn->prepare("SELECT * FROM member WHERE email=?");
+        $stmt = $conn->prepare("SELECT * FROM 2204_for_fun.member WHERE email=?");
     // Bind & execute the query statement:
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -87,7 +87,7 @@ function authenticateUser() {
                 session_start();
                 $_SESSION["email"] = $email;
                 $_SESSION["pwd"] = $pwd_hashed;
-                header("location: ../2204/home.php");
+                header("location: ../home.php");
                 exit(); 
             }
             else
@@ -105,4 +105,3 @@ function authenticateUser() {
         ?>
     </body>
 </html>
-

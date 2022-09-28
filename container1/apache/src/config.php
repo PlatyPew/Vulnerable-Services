@@ -1,5 +1,5 @@
 <?php
-    define('DB_SERVER', 'container1-db');
+    define('DB_SERVER', '127.0.0.1');
     define('DB_USERNAME', 'sqldev');
     define('DB_PASSWORD', 'Php=p@in');
     define('DB_DATABASE', '2204_for_fun');

@@ -23,8 +23,8 @@ else {
         if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
         } 
-        if (str_contains($search, "'")){           
-            echo "<script type='text/javascript'>alert('( ´´°︣ ͜ʖ °︣ ´´)');</script>"; 
+        if (strpos($search, "'") !== false) {           
+            echo "<script type='text/javascript'>alert('Let us just assume $search was a typo.');</script>";
         } else if ($result->num_rows < 1) {
             echo "<script type='text/javascript'>alert('We do not sell lousy products such as $search.');</script>";
         } else {
@@ -32,5 +32,6 @@ else {
         } 
     } catch (Exception $e) {
         echo $e->getMessage();
+        
     }
 }

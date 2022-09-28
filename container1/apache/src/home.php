@@ -21,8 +21,8 @@ else
 { 
     $email = $_SESSION["email"];
     $emailname = substr($email, 0, strpos($email, "@"));
-    $cookie_id = random_bytes("10");
-    setcookie('cookie_id', $cookie_id, time() + 600, "/2204/"); // cookie expire in 10mins
+    //$cookie_id = random_bytes("10");
+    //setcookie('cookie_id', $cookie_id, time() + 600, "/"); // cookie expire in 10mins
     $date=date("Y-m-d H:i:s");
     echo "<div class='jumbotron'>";
         echo "<div class='container text-center'>";
@@ -42,30 +42,21 @@ else
     try {
         if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
-        // insert cookie into db
-        } else {
-            $stmt = $conn->prepare("INSERT INTO cookies (cookieID, date) VALUES (?, ?)");
-            $stmt->bind_param("ss", $cookie_id, $date);
-            if (!$stmt->execute()) {
-                $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-                $success = false;
-            }
-            $stmt->close();
-        } if ($search === "") {
+        }
+	if ($search === "") {  
                 $sql = "SELECT * FROM table_of_tings;";
                 $result = mysqli_query($conn, $sql);
                 echo "<div class='container'>";
                 $rowCount = 0;
-                while ($row = $result->fetch_assoc()) {                
-                    $img_base64 = $row["img_base64"];
-                    $img = "data:image/" . "png" . ";base64," . $img_base64;
+                while ($row = $result->fetch_assoc()) {
+                    $img_path = $row["image_path"];
                     //3 cards per row
                     if($rowCount % 3 == 0) { 
                         echo "<div class='row'>";                    
                     } 
                     $rowCount++;
                     echo "<div class='card col-md-4'>";
-                        echo "<img class='card-img-top' src='$img' alt='img' height='250px' width='250px'>";
+                        echo "<img class='card-img-top' src='$img_path' alt='img' height='250px' width='250px'>";
                         echo "<div class='card-body'>";
                             echo "<p class='card-text'>" . $row["name"] . "<br>" . $row["price"] . "</p>";
                         echo "</div>";
@@ -80,7 +71,6 @@ else
         echo $e->getMessage();
     }
 }
-
 
 
 
