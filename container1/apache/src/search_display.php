@@ -1,4 +1,7 @@
 <?php
+    ob_start();
+?>
+<?php
 
 include "home.php";
 include_once "config.php";

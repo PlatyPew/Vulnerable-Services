@@ -1,4 +1,7 @@
 <?php
+    ob_start();
+?>
+<?php
 include "head.inc.php";
 include "navbar.php";
 include_once "config.php";

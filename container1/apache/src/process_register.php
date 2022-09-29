@@ -1,4 +1,7 @@
 <?php
+    ob_start();
+?>
+<?php
 
 $email = $pwd_hashed = $errorMsg = "";
 $success = true;
