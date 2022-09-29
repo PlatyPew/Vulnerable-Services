@@ -1,0 +1,5 @@
+Congratulations on solving part 1/6! Here's your flag!
+FLAG{y0u_4r3_on_7h3_h1ghw4y_70_h3ll}
+
+Sorry for the long wait hehe...
+Hope you didn't find that too difficult. ;)
