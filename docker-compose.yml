@@ -5,7 +5,7 @@ services:
         build: ./container1/apache
         container_name: container1
         ports:
-            - "8888:80"
+            - "58464:80"
         restart: always
         networks:
             - apache-mariadb
@@ -15,6 +15,8 @@ services:
                 limits:
                     cpus: "0.3"
                     memory: 128M
+        depends_on:
+            - container1-db
 
     container1-db:
         build: ./container1/mysql
@@ -23,7 +25,7 @@ services:
         networks:
             - apache-mariadb
         environment:
-            MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: true
+            MARIADB_ROOT_PASSWORD: somehorriblylongpasswordthatcannotbebruteforcedorcracked
             MARIADB_USER: sqldev
             MARIADB_PASSWORD: Php=p@in
             MARIADB_DATABASE: 2204_for_fun
@@ -76,8 +78,8 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.1"
-                    memory: 64M
+                    cpus: "0.3"
+                    memory: 128M
                     pids: 32
             restart_policy:
                 condition: on-failure
