@@ -1,0 +1,8 @@
+Congratulations on solving part 2/6! Here's your flag!
+FLAG{jia_hao_please_put_in_a_flag}
+
+2 out of 6 flags acquired but where are the rest of the vulnerabilies?
+Are there perhaps other systems on the network?
+
+Please do not attack anything in the 172.x.x.x range
+I mean you can, but there's nothing there, plus it's super locked down
