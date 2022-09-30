@@ -6,6 +6,7 @@ services:
         container_name: helper
         ports:
             - "8000:8000"
+        networks: none
         read_only: true
         ulimits:
             nproc: 1024
@@ -14,6 +15,7 @@ services:
                 limits:
                     cpus: "0.1"
                     memory: 32M
+                    pids: 32
             restart_policy:
                 condition: on-failure
                 max_attempts: 5
@@ -41,6 +43,7 @@ services:
                 limits:
                     cpus: "0.3"
                     memory: 128M
+                    pids: 32
             restart_policy:
                 condition: on-failure
                 max_attempts: 5
@@ -67,6 +70,7 @@ services:
                 limits:
                     cpus: "0.3"
                     memory: 128M
+                    pids: 32
             restart_policy:
                 condition: on-failure
                 max_attempts: 5
