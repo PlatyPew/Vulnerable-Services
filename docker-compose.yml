@@ -29,8 +29,6 @@ services:
             - container1-db
         cap_drop:
             - ALL
-        cap_add:
-            - cap_net_raw
 
     container1-db:
         build: ./container1/mysql
