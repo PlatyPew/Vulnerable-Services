@@ -6,24 +6,39 @@ services:
         container_name: container1
         ports:
             - "58464:80"
-        restart: always
         networks:
             - apache-mariadb
             - one-two
+        read_only: true
+        tmpfs:
+            - /tmp:exec
+            - /var/www/html/uploads
+            - /var/run/apache2
+        ulimits:
+            nproc: 1024
         deploy:
             resources:
                 limits:
                     cpus: "0.3"
                     memory: 128M
+            restart_policy:
+                condition: on-failure
+                max_attempts: 5
+                delay: 3s
         depends_on:
             - container1-db
+        cap_drop:
+            - ALL
+        cap_add:
+            - cap_net_raw
 
     container1-db:
         build: ./container1/mysql
         container_name: container1-db
-        restart: always
         networks:
             - apache-mariadb
+        ulimits:
+            nproc: 1024
         environment:
             MARIADB_ROOT_PASSWORD: somehorriblylongpasswordthatcannotbebruteforcedorcracked
             MARIADB_USER: sqldev
@@ -34,6 +49,12 @@ services:
                 limits:
                     cpus: "0.3"
                     memory: 128M
+            restart_policy:
+                condition: on-failure
+                max_attempts: 5
+                delay: 3s
+        cap_drop:
+            - ALL
 
     container2:
         build: ./container2
@@ -50,7 +71,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "0.2"
+                    cpus: "0.3"
                     memory: 128M
                     pids: 32
             restart_policy:
