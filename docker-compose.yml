@@ -6,7 +6,8 @@ services:
         container_name: helper
         ports:
             - "8000:8000"
-        networks: none
+        networks:
+            - helper
         read_only: true
         ulimits:
             nproc: 1024
@@ -146,3 +147,5 @@ networks:
         ipam:
             config:
                 - subnet: 10.0.2.0/24
+    helper:
+        name: helper_local
