@@ -35,7 +35,7 @@ services:
         read_only: true
         tmpfs:
             - /tmp:exec
-            - /var/www/html/uploads
+            - /var/www/html/uploads:uid=1000
             - /var/run/apache2
         ulimits:
             nproc: 1024

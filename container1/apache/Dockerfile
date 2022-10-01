@@ -1,14 +1,12 @@
 FROM php:8-apache-buster
 
-COPY src /var/www/html
+COPY --chown=www-data:www-data src /var/www/html
 
 RUN useradd -m -g users computer1 && \
     useradd -m -g users rooot && \
-    mkdir /var/www/html/uploads && \
-    chown rooot:users /var/www/html/uploads && \
     docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-COPY --chown=computer1:users ./flag1.txt /home/computer1
+COPY --chown=computer1:users ./flag1.txt /home/computer1/flag.txt
 COPY --chown=rooot:root ./flag2.txt /home/computer1/chickendinner.txt
 
 RUN apt-get update && apt-get install net-tools -y && apt-get clean && \
