@@ -18,8 +18,7 @@ services:
                     memory: 32M
                     pids: 32
             restart_policy:
-                condition: on-failure
-                max_attempts: 5
+                condition: always
                 delay: 3s
         cap_drop:
             - ALL
@@ -46,8 +45,7 @@ services:
                     memory: 128M
                     pids: 32
             restart_policy:
-                condition: on-failure
-                max_attempts: 5
+                condition: always
                 delay: 3s
         depends_on:
             - container1-db
@@ -73,8 +71,7 @@ services:
                     memory: 128M
                     pids: 32
             restart_policy:
-                condition: on-failure
-                max_attempts: 5
+                condition: always
                 delay: 3s
         cap_drop:
             - ALL
@@ -98,8 +95,7 @@ services:
                     memory: 128M
                     pids: 32
             restart_policy:
-                condition: on-failure
-                max_attempts: 5
+                condition: always
                 delay: 3s
         cap_drop:
             - ALL
@@ -126,8 +122,7 @@ services:
                     memory: 128M
                     pids: 32
             restart_policy:
-                condition: on-failure
-                max_attempts: 5
+                condition: always
                 delay: 3s
         cap_drop:
             - ALL
