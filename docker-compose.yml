@@ -10,7 +10,7 @@ services:
             - helper
         read_only: true
         ulimits:
-            nproc: 1024
+            nproc: 128
         deploy:
             resources:
                 limits:
@@ -37,7 +37,7 @@ services:
             - /var/www/html/uploads:uid=1000
             - /var/run/apache2
         ulimits:
-            nproc: 1024
+            nproc: 256
         deploy:
             resources:
                 limits:
@@ -58,7 +58,7 @@ services:
         networks:
             - apache-mariadb
         ulimits:
-            nproc: 1024
+            nproc: 256
         environment:
             MARIADB_ROOT_PASSWORD: somehorriblylongpasswordthatcannotbebruteforcedorcracked
             MARIADB_USER: sqldev
@@ -87,7 +87,7 @@ services:
             - /tmp:exec
             - /run/openrc
         ulimits:
-            nproc: 1024
+            nproc: 256
         deploy:
             resources:
                 limits:
@@ -114,7 +114,7 @@ services:
         tmpfs:
             - /tmp:exec
         ulimits:
-            nproc: 1024
+            nproc: 256
         deploy:
             resources:
                 limits:
