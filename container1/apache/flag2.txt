@@ -1,5 +1,5 @@
 Congratulations on solving part 2/6! Here's your flag!
-FLAG{jia_hao_please_put_in_a_flag}
+FLAG{1_d1d_n07_kn0w_4rp_c0uld_r34d_f1l35}
 
 2 out of 6 flags acquired but where are the rest of the vulnerabilies?
 Are there perhaps other systems on the network?
