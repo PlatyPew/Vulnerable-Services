@@ -1,7 +1,7 @@
 Congratulations on solving part 2/6! Here's your flag!
 FLAG{1_d1d_n07_kn0w_4rp_c0uld_r34d_f1l35}
 
-2 out of 6 flags acquired but where are the rest of the vulnerabilies?
+2 out of 6 flags acquired but where are the rest of the vulnerabilities?
 Are there perhaps other systems on the network?
 
 Please do not attack anything in the 172.x.x.x range
