@@ -29,7 +29,7 @@ else
     $date=date("Y-m-d H:i:s");
     echo "<div class='jumbotron'>";
         echo "<div class='container text-center'>";
-            echo "<h1>Online Store 29</h1>";
+            echo "<h1>Online Store 69420</h1>";
             echo "<p>Welcome " . $emailname . "!</p>";
         echo "</div>";
     echo "</div>";    

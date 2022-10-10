@@ -66,9 +66,9 @@
                          </div>
                          <div class="div-side col-lg-6 d-flex align-items-center black">
                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                             <h4 class="mb-4">WELCOME TO ONLINE STORE 29</h4>
+                             <h4 class="mb-4">WELCOME TO ONLINE STORE 69420</h4>
                              <p class="small mb-0">THANK YOU! YOU'LL BE ADDED TO OUR MAILING LIST AND WILL NOW BE AMONG THE FIRST TO HEAR ABOUT NEW ARRIVALS AND SPECIAL OFFERS.
-                             AS A SPECIAL GIFT, ENJOY 29% OFF YOUR NEXT ONLINE PURCHASE WITH CODE ILUV-TEAM-29-4EVER-TH3-BEST-TEAM-EVER AT CHECKOUT.</p>
+                             AS A SPECIAL GIFT, ENJOY 69% OFF YOUR NEXT ONLINE PURCHASE WITH CODE ILUV-TEAM-69420-4EVER-TH3-BEST-TEAM-EVER AT CHECKOUT.</p>
                            </div>
                          </div>
                        </div>

@@ -61,7 +61,7 @@
                          </div>
                          <div class="col-lg-6 d-flex align-items-center gradient">
                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                             <h4 class="mb-4">Online Store 29</h4>
+                             <h4 class="mb-4">Online Store 69420</h4>
                              <p class="small mb-0">Welcome blah blah blah Best online store you ever seen Blah blah blah blah blah 
                                  Believe in teamwork and dedication blah blah blah top priority is ethics and professionalism blah 
                                  blah blah blah blah blah blah blah blah good luck</p>
