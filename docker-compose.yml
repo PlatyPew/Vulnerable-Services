@@ -102,7 +102,6 @@ services:
         cap_add:
             - cap_setuid
             - cap_setgid
-            - cap_net_raw
             - cap_sys_chroot
 
     container3:
